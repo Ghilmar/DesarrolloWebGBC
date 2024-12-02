@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function esPalindromo(cadena) {
+        let cadenaLimpia = cadena.toLowerCase().replace(/[^a-z0-9]/g, "");
+        let cadenaInvertida = cadenaLimpia.split("").reverse().join("");
+
+        return cadenaLimpia === cadenaInvertida;
+      }
+
+      let frase = prompt("Ingresa una frase:");
+
+      if (esPalindromo(frase)) {
+        alert("Es un palíndromo.");
+      } else {
+        alert("No es un palíndromo.");
+      }
+    </script>
+  </body>
+</html>

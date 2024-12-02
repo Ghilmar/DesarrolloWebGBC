@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles_pregunta2.css">
+</head>
+<body>
+        <form action="tablero.php" method="get" class="form">
+            <h2>Formulario Pregunta 2</h2>
+            <label for="numfilas" >numerofilas:</label>
+            <input type="number" id="numfilas" name="numfilas" required>
+    
+            <label for="numcolumnas">numerocolumnas:</label>
+            <input type="number" id="numcolumnas" name="numcolumnas" required>
+    
+            <label for="fila">fila:</label>
+            <input type="number" id="fila" name="fila" required>
+    
+            <label for="columna">columna:</label>
+            <input type="number" id="columna" name="columna" required>
+    
+            <label for="color">Color:</label>
+            <input type="color" id="color" name="color" value="#C60000" required><br>
+    
+            <input type="submit" value="Generar Tablero" class="envia">
+        </form>
+</body>
+</html>

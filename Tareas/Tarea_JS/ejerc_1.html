@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let num1 = parseInt(prompt("Ingresa el primer número:"));
+        let num2 = parseInt(prompt("Ingresa el segundo número:"));
+        let num3 = parseInt(prompt("Ingresa el tercer número:"));
+        let num4 = parseInt(prompt("Ingresa el cuarto número:"));
+        let mayor = num1;
+
+        if (num1 >= num2 && num1 >= num3 && num1 >= num4) {
+            mayor = num1;
+        } else if (num2 >= num1 && num2 >= num3 && num2 >= num4) {
+            mayor = num2;
+        } else if (num3 >= num1 && num3 >= num2 && num3 >= num4) {
+            mayor = num3;
+        } else {
+            mayor = num4;
+        }
+        document.writeln('El mayor es: ' + mayor);
+        
+    </script>
+
+</body>
+</html>

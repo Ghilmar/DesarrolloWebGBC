@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de visibilidad</title>
+</head>
+<body>
+    <div id="miDiv" style="display: none;">
+        Este es un div que se puede ocultar.
+    </div>
+
+    <button onclick="ocultar()">Ocultar</button>
+    <button onclick="mostrar()">Mostrar</button>
+    <button onclick="rojo()">rojo</button>
+    <button onclick="nada()">nada</button>
+
+    <script>
+        function ocultar() {
+            document.getElementById("miDiv").style.display = "none";
+        }
+
+        function mostrar() {
+            document.getElementById("miDiv").style.display = "block";
+        }
+        function rojo(){
+            document.getElementById("miDiv").style.backgroundColor = "red";
+        }
+        function nada(){
+            document.getElementById("miDiv").style.backgroundColor = "white";
+        }
+    </script>
+</body>
+</html>

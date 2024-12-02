@@ -1,0 +1,17 @@
+table {
+    border-collapse: collapse;
+    width: 20%;
+    margin: 20px auto;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.rojo {
+    background-color: rgb(164, 12, 12);
+    color: white;
+    font-weight: bold;
+}

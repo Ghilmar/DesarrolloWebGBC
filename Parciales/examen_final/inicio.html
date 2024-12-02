@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIS 256 Programación Web</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+
+      <nav class="col-md-1 sidebar d-flex flex-column align-items-start" id="menu">
+        <img src="img/escudo.png" alt="Logo" class="img-fluid mt-3 mb-4" style="max-width: 80px; margin-left: 10px;">
+        <a href="#">Inicio</a>
+        <a href="#">Pregunta 2</a>
+        <a href="#">Pregunta 3</a>
+        <a href="#">Pregunta 4</a>
+        <a href="#">Pregunta 5</a>
+      </nav>
+
+
+      <main class="col-md-11" style="padding: 0;">
+        <nav class="navbar" id="navegacion">
+          <div class="container-fluid">
+            <button type="button" class="btn btn-sm" onclick="inicio()">Inicio</button>
+            <button type="button" class="btn btn-sm" onclick="pregunta2()">Pregunta 2</button>
+            <button type="button" class="btn btn-sm" onclick="pregunta3()">Pregunta 3</button>
+            <button type="button" class="btn btn-sm" onclick="pregunta4()">Pregunta 4</button>
+            <button type="button" class="btn btn-sm" onclick="pregunta5()">Pregunta 5</button>
+            <span class="navbar-text ms-auto">
+              <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal" id="login">
+                Iniciar Sesión
+              </button>
+            </span>
+          </div>
+        </nav>
+
+        <div class="text-center my-4 heder" id="principal">
+          <h4>SIS 256 Programación Web</h4>
+          <p>Examen Final</p>
+          <img src="img/foto.jpg" alt="Avatar" class="rounded-circle" style="width: 120px; height: 120px;">
+          <h5>Betancur Calapina Gilmar Edson</h5>
+          <p>Ing. de Sistemas</p>
+          <p>Repositorio: <a href="https://github.com/Ghilmar" class="btn btn-primary btn-sm" target="_blank">haga click aquí</a></p>
+        </div>
+        <hr>
+        <section class="services text-center " style="margin-bottom: 20px;">
+          <h4>Nuestros Servicios</h4>
+          <div class="container"> 
+            <div class="row mt-3">
+              <div class="col-md-4" style="padding: 0;">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title title1">Consultoria</h4>
+                    <p class="card-text">Asesoramiento personalizado para mejorar tu negocio.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4" style="padding: 0;">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title title2">Desarrollo Web</h5>
+                    <p class="card-text">Sitios web modernos y funcionales para tu empresa.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4" style="padding: 0;">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title title3">Soporte Técnico</h6>
+                    <p class="card-text">Asistencia 24/7 para garantizar el éxito de tu negocio.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer class="footer text-white" id="pie" style="background-color: rgb(17, 4, 56);">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 text-start">
+                © Examen Final Tecnología y Desarrollo Web
+              </div>
+              <div class="col-md-6 text-end">
+                <a href="#" class="text-white text-decoration-none mx-2">Facebook</a>
+                <a href="#" class="text-white text-decoration-none mx-2">Twitter</a>
+                <a href="#" class="text-white text-decoration-none mx-2">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+ <!-- moda -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="usuario" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="usuario" name="usuario" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    //inicio refresh
+    function inicio(){
+      location.reload();
+    }
+
+    //pregunta 2
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);   
+      fetch('login.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            window.nivel = data.nivel; 
+    
+            document.getElementById('login').outerHTML = `<span>${data.usuario}</span>`;
+    
+            const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            modal.hide();
+          } else {
+            alert(data.message);
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    
+    //preguntat 3
+    function pregunta3() {
+      fetch('listar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('principal').innerHTML = html;
+          listarLibros('todos');
+        })
+    }
+    
+    //pregunta 3 listar
+    function listarLibros(filtro) {
+      const tablaLibros = document.getElementById('tablaLibros');
+    
+      fetch(`listar.php?filtro=${filtro}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.length > 0) {
+            let html = `
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Imagen</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Carrera</th>
+                    <th>Operaciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+            `;
+    
+            data.forEach(libro => {
+              html += `
+                <tr>
+                  <td><img src="img/${libro.imagen}" alt="${libro.titulo}" style="width: 50px;"></td>
+                  <td>${libro.titulo}</td>
+                  <td>${libro.autor}</td>
+                  <td>${libro.carrera}</td>
+                  <td>
+                    ${window.nivel === 1 ? `
+                      <button class="btn btn-warning btn-sm" onclick="mostrarEditar(${libro.id})">Editar</button>
+                      <button class="btn btn-danger btn-sm" onclick="mostrarEliminar(${libro.id})">Eliminar</button>
+                    ` : 'No autorizado'}
+                  </td>
+                </tr>
+              `;
+            });
+            html += '</tbody></table>';
+            tablaLibros.innerHTML = html;
+          } 
+        })
+        
+    }
+    
+    //preguntat 4
+    function pregunta4() {
+  fetch('ecuacion.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('principal').innerHTML = html;
+
+      const form = document.getElementById('ecuacionForm');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const a = parseFloat(document.getElementById('a').value);
+        const b = parseFloat(document.getElementById('b').value);
+        const c = parseFloat(document.getElementById('c').value);
+
+        const discriminante = b * b - 4 * a * c;
+        const resultadosDiv = document.getElementById('resultados');
+        const x1Div = document.getElementById('x1');
+        const x2Div = document.getElementById('x2');
+
+        if (discriminante >= 0) {
+          const raiz1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+          const raiz2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+          x1Div.innerHTML = `x1 = ${raiz1}`;
+          x2Div.innerHTML = `x2 = ${raiz2}`;
+        } else {
+          const parteReal = (-b / (2 * a)).toFixed();
+          const parteImaginaria = (Math.sqrt(-discriminante) / (2 * a)).toFixed();
+          x1Div.innerHTML = `x1 = ${parteReal} + <span style="color: red;">${parteImaginaria}i</span>`;
+          x2Div.innerHTML = `x2 = ${parteReal} - <span style="color: red;">${parteImaginaria}i</span>`;
+        }
+      });
+    })
+    .catch(error => console.error('Error al cargar ecuacion.html:', error));
+}
+
+    //pregunta 5
+    function pregunta5() {
+  const principal = document.getElementById('principal');
+  principal.innerHTML = ''; 
+
+  const table = document.createElement('table');
+  table.style.width = '100%';
+  table.style.borderCollapse = 'collapse';
+
+  const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'gray', 'teal', 'cyan', 'lime', 'brown', 'coral', 'gold', 'silver', 'navy'];
+  let selectedColor = '';
+
+  for (let i = 0; i < 4; i++) {
+    const row = document.createElement('tr');
+    for (let j = 0; j < 4; j++) {
+      const cell = document.createElement('td');
+      const color = colors[i * 4 + j]; 
+      cell.style.width = '25%';
+      cell.style.padding = '20px';
+      cell.style.backgroundColor = color;
+      cell.style.border = '1px solid black';
+      cell.style.cursor = 'pointer';
+
+      cell.addEventListener('click', () => {
+        selectedColor = color;
+        //alert(`Color seleccionado: ${selectedColor}`);
+      });
+      row.appendChild(cell);
+    }
+    table.appendChild(row);
+  }
+  principal.appendChild(table);
+
+  const sections = ['menu', 'pie', 'navegacion', 'principal', 'login'];
+  sections.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    section.style.cursor = 'pointer';
+    section.addEventListener('click', () => {
+      if (selectedColor) {
+        section.style.backgroundColor = selectedColor;
+      } 
+    });
+  });
+}
+
+  </script>
+</body>
+</html>

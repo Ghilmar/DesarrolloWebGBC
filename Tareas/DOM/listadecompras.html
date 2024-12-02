@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de compras</h1>
+    <input type="text" name="elemento" id="elemneto">
+    <button onclick="anadir()">Anadir</button>
+    <ul id="lista">
+
+    </ul>
+
+    <script>
+        function anadir(){
+            var n=1;
+            var elemento = document.getElementById("elemneto").value;
+            var lista = document.getElementById("lista");
+            if(n==1){
+                
+                n=0;
+            }
+            var nuevoElemento = document.createElement("li");
+            nuevoElemento.textContent = elemento;
+            lista.appendChild(nuevoElemento); 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<div class="calculadora"  id="calculadora">
+    <label for="numero">Tabla del:</label>
+    <input type="number" id="numero" value="5" />
+  
+    <label for="hasta">Hasta el:</label>
+    <input type="number" id="hasta" value="4" />
+  
+    <div class="calcu">
+      <input type="radio" id="suma" name="operacion" value="suma" />
+      <label for="suma">Suma</label>
+  
+      <input type="radio" id="resta" name="operacion" value="resta" />
+      <label for="resta">Resta</label>
+  
+      <input type="radio" id="multiplicar" name="operacion" value="multiplicar" />
+      <label for="multiplicar">Multiplicar</label>
+  
+      <input type="radio" id="dividir" name="operacion" value="dividir" />
+      <label for="dividir">Dividir</label>
+    </div>
+  
+    <button id="calcular">Calcular</button>
+  </div>
+  
+  <div id="resultado"></div>
+  
+
+  <style>
+    .calculadora{
+     border: 2px solid #000000;
+    }
+
+    #resultado {
+        margin-top: -1px;
+        border: 2px solid #f48200;
+    }
+    
+    
+  </style>
